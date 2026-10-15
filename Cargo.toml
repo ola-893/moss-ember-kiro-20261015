@@ -1,0 +1,16 @@
+[package]
+name = "moss-ember"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "moss_ember"
+crate-type = ["rlib"]
+
+[dependencies]
+fission = { version = "=0.14.1", default-features = false, features = ["site"] }
+url = "2"
+
+[dev-dependencies]
+tempfile = "3"

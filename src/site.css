@@ -1,0 +1,425 @@
+/* Moss & Ember — site styles
+   Palette: cream #f7f4ef · forest green #2d5a3d · terracotta #c8603a
+            sand #e8ddd0 · muted #7a6b5d · line #d9d0c5               */
+
+:root {
+  --paper:  #f7f4ef;
+  --ink:    #1e2b23;
+  --forest: #2d5a3d;
+  --terra:  #c8603a;
+  --sand:   #e8ddd0;
+  --muted:  #7a6b5d;
+  --line:   #d9d0c5;
+  --soft:   #f0ece6;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.7;
+  /* prevent any child from causing horizontal scroll */
+  overflow-x: hidden;
+}
+
+/* ── Root container ─────────────────────────────────────────────────────── */
+.fission-site-root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 44px 80px;
+  /* guard against any child overflowing the root */
+  overflow-x: hidden;
+}
+
+/* Fission text/box resets — ensure all boxes stay within their container */
+.fission-site-text { color: inherit; font-family: inherit; font-size: inherit; line-height: inherit; }
+.fission-site-box  { min-width: 0; max-width: 100%; }
+.fission-site-column { min-width: 0; max-width: 100%; }
+
+/* ── Typography ─────────────────────────────────────────────────────────── */
+h1, h1 span {
+  font-family: "Georgia", serif;
+  font-size: clamp(38px, 5.8vw, 76px) !important;
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -.03em;
+  color: var(--ink);
+  white-space: pre-line;
+  margin: 0;
+}
+h2, h2 span {
+  font-family: "Georgia", serif;
+  font-size: clamp(24px, 3.2vw, 40px) !important;
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  white-space: pre-line;
+  margin: 0;
+}
+h3, h3 span {
+  font-family: "Georgia", serif;
+  font-size: clamp(18px, 2vw, 26px) !important;
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -.015em;
+  white-space: pre-line;
+  margin: 0;
+}
+
+a { color: var(--forest); text-underline-offset: 5px; }
+a:hover { color: var(--terra); }
+a:focus-visible { outline: 3px solid var(--forest); outline-offset: 5px; }
+
+/* ── Page wrapper — remove inter-section gaps ───────────────────────────── */
+[data-fission-semantics="page"] { width: 100%; max-width: 100%; }
+[data-fission-semantics="page"] > div { gap: 0 !important; }
+
+/* ── Navigation ─────────────────────────────────────────────────────────── */
+[data-fission-semantics="navigation"] {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+[data-fission-semantics="navigation"] > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+[data-fission-semantics="navigation"] > div > a {
+  font-family: "Georgia", serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+[data-fission-semantics="nav-links"] > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px !important;
+}
+[data-fission-semantics="nav-links"] a {
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+[data-fission-semantics="hero"] {
+  padding: 64px 0 72px;
+}
+[data-fission-semantics="hero"] > div {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: start;
+  gap: 56px !important;
+}
+[data-fission-semantics="hero-copy"] > div {
+  gap: 28px !important;
+}
+/* eyebrow */
+[data-fission-semantics="hero-copy"] > div > .fission-site-box:first-child > span {
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+/* body copy */
+[data-fission-semantics="hero-copy"] > div > .fission-site-box > span {
+  color: var(--muted);
+  max-width: 500px;
+}
+/* hours line */
+[data-fission-semantics="hero-copy"] > div > .fission-site-box:last-child > span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* CTA action row */
+[data-fission-semantics="actions"] > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px !important;
+}
+[data-fission-semantics="actions"] a:first-child {
+  padding: 14px 26px;
+  border-radius: 4px;
+  background: var(--forest);
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  font-family: "Georgia", serif;
+  white-space: nowrap;
+}
+[data-fission-semantics="actions"] a:first-child:hover { background: var(--ink); }
+[data-fission-semantics="actions"] a:last-child { font-size: 14px; color: var(--muted); }
+
+/* Mood card */
+[data-fission-semantics="hero-mood"] > div { gap: 20px !important; }
+[data-fission-semantics="mood-card"] {
+  background: var(--sand);
+  border-radius: 12px 12px 4px 4px;
+  padding: 36px 32px 28px;
+  word-break: break-word;
+}
+[data-fission-semantics="mood-card"] > div { gap: 16px !important; }
+[data-fission-semantics="mood-card"] > div > .fission-site-box:first-child > span {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+[data-fission-semantics="mood-card"] > div > .fission-site-box > span {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── Intro band ─────────────────────────────────────────────────────────── */
+[data-fission-semantics="intro"] {
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--line);
+}
+[data-fission-semantics="intro"] > div > .fission-site-box:first-child > span {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+[data-fission-semantics="intro"] > div > .fission-site-box:last-child > span {
+  color: var(--muted);
+  max-width: 680px;
+}
+
+/* ── Daily specials strip ───────────────────────────────────────────────── */
+[data-fission-semantics="specials"] { padding: 8px 0 48px; }
+[data-fission-semantics="specials"] > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px !important;
+}
+[data-fission-semantics="special"] {
+  padding: 28px 0;
+  border-top: 2px solid var(--terra);
+}
+[data-fission-semantics="special"] > div { gap: 14px !important; }
+[data-fission-semantics="special"] > div > .fission-site-box:first-child > span {
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: var(--terra);
+  text-transform: uppercase;
+}
+[data-fission-semantics="special"] > div > .fission-site-box:last-child > span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── Page hero (interior pages) ─────────────────────────────────────────── */
+[data-fission-semantics="page-hero"] {
+  padding: 56px 0 48px;
+  max-width: 740px;
+}
+[data-fission-semantics="page-hero"] > div > .fission-site-box:first-child > span {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+[data-fission-semantics="page-hero"] > div > .fission-site-box:last-child > span {
+  color: var(--muted);
+}
+
+/* ── Menu sections ──────────────────────────────────────────────────────── */
+[data-fission-semantics^="section-"] {
+  padding: 40px 0 12px;
+  border-top: 1px solid var(--line);
+}
+[data-fission-semantics^="section-"] > div { gap: 20px !important; }
+[data-fission-semantics^="section-"] > div > .fission-site-box:first-child > span {
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: var(--forest);
+  text-transform: uppercase;
+}
+[data-fission-semantics^="section-"] > div > .fission-site-box:nth-child(3) > span {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 640px;
+}
+
+/* Menu item rows */
+[data-fission-semantics="menu-item"] {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+[data-fission-semantics="menu-item"] > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px !important;
+}
+[data-fission-semantics="menu-item-text"] > div { gap: 4px !important; }
+[data-fission-semantics="menu-item-text"] > div > .fission-site-box:first-child > span {
+  font-weight: 600;
+  font-size: 15px;
+}
+[data-fission-semantics="menu-item-text"] > div > .fission-site-box:last-child > span {
+  font-size: 13px;
+  color: var(--muted);
+}
+[data-fission-semantics="menu-item"] > div > .fission-site-box:last-child > span {
+  font-size: 14px;
+  color: var(--forest);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Visit info rows ────────────────────────────────────────────────────── */
+[data-fission-semantics="hours-list"] > div,
+[data-fission-semantics="address-details"] > div,
+[data-fission-semantics="access-list"] > div { gap: 0 !important; }
+[data-fission-semantics="info-row"] {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+[data-fission-semantics="info-row"] > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px !important;
+  align-items: baseline;
+}
+[data-fission-semantics="info-row"] > div > .fission-site-box:first-child > span {
+  font-size: 13px;
+  color: var(--muted);
+}
+[data-fission-semantics="info-row"] > div > .fission-site-box:last-child > span {
+  font-size: 15px;
+}
+
+/* Visit section headings reuse section- rules above */
+[data-fission-semantics="section-about"] > div > .fission-site-box > span {
+  max-width: 680px;
+}
+
+/* ── Notice block ───────────────────────────────────────────────────────── */
+[data-fission-semantics="notice"] {
+  background: var(--soft);
+  border-left: 3px solid var(--terra);
+  padding: 28px 32px;
+  border-radius: 4px;
+  margin-top: 32px;
+}
+[data-fission-semantics="notice"] > div > .fission-site-box:last-child > span {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── CTA banner ─────────────────────────────────────────────────────────── */
+[data-fission-semantics="next-step"] {
+  background: var(--forest);
+  color: #fff;
+  padding: 36px 40px;
+  margin-top: 56px;
+  border-radius: 6px;
+}
+[data-fission-semantics="next-step"] h2,
+[data-fission-semantics="next-step"] h2 span {
+  color: #fff;
+  font-size: clamp(20px, 2.4vw, 30px) !important;
+}
+[data-fission-semantics="next-step"] > div > .fission-site-box > span {
+  color: rgba(255,255,255,.75);
+  font-size: 14px;
+}
+[data-fission-semantics="next-step"] a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+footer {
+  max-width: 1112px;
+  margin: 0 auto;
+  padding: 32px 44px 56px;
+  border-top: 1px solid var(--line);
+}
+[data-fission-semantics="footer"] > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px !important;
+}
+[data-fission-semantics="footer-brand"] > div { gap: 6px !important; }
+[data-fission-semantics="footer-brand"] > div > .fission-site-box:first-child > span {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Georgia", serif;
+}
+[data-fission-semantics="footer-brand"] > div > .fission-site-box:last-child > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+[data-fission-semantics="footer-links"] > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  align-items: flex-end;
+}
+[data-fission-semantics="footer-links"] a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+}
+[data-fission-semantics="footer-links"] a:last-child {
+  color: var(--forest);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* ── Responsive: ≤ 800px — collapse hero and specials grids ────────────── */
+/*   Fission itself applies max-width:100%!important at ≤720px;
+     collapsing grids at 800px ensures they are gone before that kicks in  */
+@media (max-width: 800px) {
+  [data-fission-semantics="hero"] > div {
+    grid-template-columns: 1fr;
+    gap: 32px !important;
+  }
+  [data-fission-semantics="hero-mood"] { max-width: 540px; }
+  [data-fission-semantics="specials"] > div { grid-template-columns: 1fr; }
+  [data-fission-semantics="info-row"] > div {
+    grid-template-columns: 1fr;
+    gap: 4px !important;
+  }
+}
+
+/* ── Responsive: ≤ 640px — tighten padding and minor adjustments ────────── */
+@media (max-width: 640px) {
+  .fission-site-root { padding: 0 20px 48px; }
+  footer { padding: 28px 20px 44px; }
+  [data-fission-semantics="navigation"] { padding: 20px 0; }
+  [data-fission-semantics="nav-links"] > div { gap: 16px !important; }
+  [data-fission-semantics="hero"] { padding: 36px 0 44px; }
+  [data-fission-semantics="page-hero"] { padding: 32px 0 28px; }
+  [data-fission-semantics="mood-card"] { padding: 24px 18px 20px; }
+  [data-fission-semantics="next-step"] { padding: 24px 20px; margin-top: 36px; }
+  [data-fission-semantics="notice"] { padding: 20px 18px; }
+  [data-fission-semantics="footer-links"] > div { align-items: flex-start; }
+  [data-fission-semantics="hero-copy"] > div > .fission-site-box > span { max-width: 100%; }
+}

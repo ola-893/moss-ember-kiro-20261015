@@ -1,0 +1,4 @@
+target/
+platforms/*/build/
+dist/
+fission-preview-*.png

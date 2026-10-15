@@ -1,0 +1,56 @@
+targets = [
+    "linux",
+    "macos",
+    "static-site",
+    "windows",
+]
+
+[app]
+name = "moss-ember"
+app_id = "com.example.moss_ember"
+version = "0.1.0"
+build = 1
+
+[site]
+entry = "crate::site_app"
+base_url = "https://ola-893.github.io/moss-ember-kiro-20261015/"
+out_dir = "dist/site"
+title = "Moss & Ember"
+description = "Neighbourhood café and bakery in Thornfield Village. Demo site."
+generate_sitemap = true
+generate_robots = true
+
+[distribution.github_pages.production]
+owner = "ola-893"
+repo = "moss-ember-kiro-20261015"
+mode = "actions"
+source = "github-actions"
+site_kind = "project"
+base_path = "/moss-ember-kiro-20261015/"
+enforce_https = true
+workflow = "fission-pages.yml"
+production_branch = "main"
+
+[package.macos]
+bundle_id = "com.example.moss_ember"
+marketing_version = "0.1.0"
+build_number = "1"
+minimum_os = "13.0"
+
+[package.windows]
+identity_name = "com.example.moss.ember"
+publisher = "CN=Fission Developer"
+version = "0.1.0"
+installer = "msix"
+certificate_thumbprint_env = "WINDOWS_CERTIFICATE_THUMBPRINT"
+certificate_base64_env = "WINDOWS_CERTIFICATE_BASE64"
+certificate_password_env = "WINDOWS_CERTIFICATE_PASSWORD"
+
+[distribution.microsoft_store]
+package_identity_name = "com.example.moss.ember"
+package_type = "msix"
+token_env = "MICROSOFT_STORE_TOKEN"
+tenant_id_env = "AZURE_TENANT_ID"
+client_id_env = "AZURE_CLIENT_ID"
+client_secret_env = "MICROSOFT_STORE_CLIENT_SECRET"
+seller_id_env = "MICROSOFT_STORE_SELLER_ID"
